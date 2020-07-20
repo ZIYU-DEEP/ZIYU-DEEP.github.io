@@ -1,10 +1,13 @@
 ---
 layout: page
 title: "About"
-description: ""
+description: "TODO"
 header-img: "img/about-bg.jpg"
 multilingual: true
+comments: true
 ---
+
+{% include github-calendar.html %}
 
 {% include multilingual-sel.html %}
 
@@ -19,7 +22,6 @@ multilingual: true
     {% capture about_en %}{% include about/en.md %}{% endcapture %}
     {{ about_en | markdownify }}
 </div>
-
 
 {% if site.disqus_username %}
 <!-- disqus 评论框 start -->
