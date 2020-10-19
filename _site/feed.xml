@@ -5,105 +5,490 @@
     <description>Ziyu Ye</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Oct 2020 16:34:08 +0800</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2020 16:34:08 +0800</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2020 16:45:46 +0800</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2020 16:45:46 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
     
       <item>
-        <title>SVD and Underdetermined Least Squares</title>
-        <description>&lt;p&gt;This blog discusses the difference in least-squares weight vectors across over- and underdetermined linear systems, and how &lt;a href=&quot;https://www.wikiwand.com/en/Singular_value_decomposition&quot;&gt;&lt;strong&gt;singular value decomposition&lt;/strong&gt;&lt;/a&gt; (SVD) can be applied to derive a consistent expression. It is heavily based on Professor &lt;a href=&quot;https://voices.uchicago.edu/willett/&quot;&gt;Rebecca Willet&lt;/a&gt;’s course &lt;a href=&quot;https://voices.uchicago.edu/willett/teaching/fall-2019-mathematical-foundations-of-machine-learning/&quot;&gt;Mathematical Foundations of Machine Learning&lt;/a&gt; and it assumes basic knowledge of linear algebra.&lt;/p&gt;
+        <title>Awesome Representation learning for Autoencoders.</title>
+        <description>&lt;p&gt;Last updated on October, 2020.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;typical-least-squares&quot;&gt;Typical Least Squares&lt;/h1&gt;
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;The &lt;strong&gt;bottlenecked&lt;/strong&gt; nature empowered autoencoder-based models (AEs) the ability to learn features of input data; the &lt;strong&gt;unsupervised&lt;/strong&gt; and
+&lt;strong&gt;generative&lt;/strong&gt; nature of AEs further facilitate the generalizability of the learned features, which is particularly useful in the scenario when unlabeled data is abundant whereas labeled data is scarce.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Least squares&lt;/strong&gt; can be described as follows: given the feature matrix $X$ of shape $n \times p$ and the target vector $y$ of shape $n \times 1$, we want to find a coefficient vector $\hat{w}$ of shape $n \times 1$ that satisfies $\hat{w} = \operatorname{argmin}{|y-X w|^{2}}$. &lt;strong&gt;Intuitively&lt;/strong&gt;, least squares attempts to approximate the solution of linear systems by minimizing the sum of squares of the residuals made in the results of every single equation.&lt;/p&gt;
+&lt;p&gt;Down to a science, the future of machine learning to solve real-world tasks is likely to be generative models (to pretrain) followed by discriminative models (to predict). AEs (especially its variational families), as an important member of generative models, thus becomes crucial to study.&lt;/p&gt;
 
-&lt;p&gt;On most occasions, we assume that $n \ge p$ and $\operatorname{rank}(X)=p$. In other words, the number of observations is no less than that of features and none of the features is a linear combination of the others (no “redundant” features). A linear system $y = Xw$ is &lt;strong&gt;overdetermined&lt;/strong&gt; if $n \ge p$. We can get $\hat{w}$ with the &lt;a href=&quot;http://mlwiki.org/index.php/Normal_Equation#Normal_Equation&quot;&gt;&lt;strong&gt;normal equation&lt;/strong&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;In this curated list of literature review, we will focus on recent (1) theories to understand the learning ability and characteristics of autoencoders, (2) models and applications exploiting autoencoders for representation learning and downstream tasks, and (3) adversarial attacks and defenses for autoencoders (we include this topic here, as it is important to reveal some crutial nature (e.g. robustness, smoothness, manifold properies etc.) of the latent space of AEs). We may also include some not so autoencoder relavant but representation learning relavant papers in this list.&lt;/p&gt;
 
-&lt;p&gt;\begin{equation}\hat{w}=\left(X^{T} X\right)^{-1} X^{T} y\end{equation}&lt;/p&gt;
+&lt;p&gt;The list is organized as follows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#Survey&quot;&gt;Survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Theory&quot;&gt;Theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Models&quot;&gt;Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Applications&quot;&gt;Applications&lt;/a&gt; (Here we are specifically interested in applications using encoder outputs for downstream task.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Attacks&quot;&gt;Attacks on Autoencoders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Defenses&quot;&gt;Defense by Autoencoders&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Miscellaneous&quot;&gt;Miscellaneous&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;However, if $n &amp;lt; p$ or when some columns in $X$ are linearly dependent, the matrix $X^TX$ may not be invertible. When the number of features is larger than that of observations, we call the linear system $y = Xw$ &lt;strong&gt;underdetermined&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In each section, papers are primarily organized by topic, then by conferences, lastly by chronological order. A short summary will be accompanied below the paper if necessary. 🧑🏻‍🚀 denotes important papers from my own perspective. 🐣 refers to the ones I haven’t read but they look interesting, and would be added a summary below later.
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;underdetermined-least-squares&quot;&gt;Underdetermined Least Squares&lt;/h1&gt;
+&lt;h1 id=&quot;survey&quot;&gt;Survey&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Recent Advances in Autoencoder-Based Representation Learning&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1812.05069&quot;&gt;link&lt;/a&gt;]  &lt;br /&gt;
+Michael Tschannen, Olivier Bachem, Mario Lucic&lt;br /&gt;
+&lt;em&gt;3rd workshop on Bayesian Deep Learning (NeurIPS 2018)&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;When $n &amp;lt; p$ and ,$\operatorname{rank}(X)=n$ there are infinitely many solutions to the system $y = Xw$. Among these solutions, we can find the one with the smallest norm via the method of Lagrange multiplier and use it as the least-squares weight vector for the underdetermined linear system.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Threat of Adversarial Attacks on Deep Learning in Computer Vision: A Survey&lt;/strong&gt; [&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8294186&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Naveed Akhtar, Ajmal Mian&lt;br /&gt;
+&lt;em&gt;IEEE Access, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;However, &lt;strong&gt;why is the least-norm solution desirable&lt;/strong&gt;? One hand-wavy way to look at this: the third feature is small in scale. If it’s vulnerable to measurement error and we assign a large weight to it, our predictions on unseen data can be heavily biased by the third feature alone and thus far from the true target. Therefore, the first solution is better.&lt;/p&gt;
-
-&lt;p&gt;we want to minimize $|w|^{2}$ with the constraint that $y = Xw$. Introduce the Lagrange multiplier $L(w, \lambda)=w^{T} w+\lambda^{T}(X w-y)$. Under the optimal conditions that $\nabla_{w} L=2 w+X^{T} \lambda=0$, $\nabla_{\lambda} L=X w-y=0$, we have:&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}\hat{w}=X^{T}\left(X X^{T}\right)^{-1} y\end{equation}&lt;/p&gt;
-
-&lt;p&gt;The equation of the weight vector for underdetermined least squares is very different from that for overdetermined least squares.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;singular-value-decomposition&quot;&gt;Singular Value Decomposition&lt;/h1&gt;
-
-&lt;p&gt;This section provides a basic introduction to SVD. Consider a matrix $X$ of shape $n \times p$. There always exists matrices $U$, $\Sigma$, $V$ such that $X=U_{n \times n} \Sigma_{n \times p} V_{p \times p}^{T}$. Where both $U$ and $V$ are orthogonal ($U^{T} U=U U^{T}=I$, and $V^{T} V=V V^{T}=I$), and $Σ$ is diagonal.&lt;/p&gt;
-
-&lt;p&gt;The columns of $U$ are the left singular vectors, they form an orthonormal basis for the columns of $X$. The diagonal elements of $Σ$ are called singular values $\sigma_{1} \geq \sigma_{2} \geq \ldots \geq \sigma_{p} \ge 0$. The number of non-zero singular values is the rank of the matrix $X$, and the columns of &lt;em&gt;Σ&lt;/em&gt; are the basis for the rows of $X$. The rows of $V$ are called the right singular vectors, they are the basis coefficients on the columns of $UΣ$ to represent each column of $X$.&lt;/p&gt;
-
-&lt;h1 id=&quot;svd-and-least-squares&quot;&gt;SVD and Least Squares&lt;/h1&gt;
-
-&lt;p&gt;With SVD, we can rewrite the least-squares weight vectors. Use that of the underdetermined least squares as an example:&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}X^{T}\left(X X^{T}\right)^{-1}=V \Sigma^{T} U^{T}\left(U \Sigma V^{T} V \Sigma^{T} U^{T}\right)^{-1}=V \Sigma^{T}\left(\Sigma \Sigma^{T}\right)^{-1} U^{T}\end{equation}&lt;/p&gt;
-
-&lt;p&gt;The expression above can seem a bit daunting, but if we take a closer look: $\Sigma^{T}\left(\Sigma \Sigma^{T}\right)^{-1}=\Sigma^{\dagger}$. Here $\Sigma^\dagger$ is the pseudo-inverse of $\Sigma$ and is of shape $p \times n$. We can get this by transposing $\Sigma$, and take the reciprocals of its diagonal elements. Then the least-squares vector of an underdetermined linear system can be rewritten as:&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}\hat{w}=X^{T}\left(X X^{T}\right)^{-1} y=V \Sigma^{\dagger} U^{T} y\end{equation}&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;numerical-experiment&quot;&gt;Numerical Experiment&lt;/h1&gt;
-
-&lt;p&gt;To verify our findings, we will use a subsample of the &lt;a href=&quot;http://eigentaste.berkeley.edu/dataset/&quot;&gt;Jester Datasets&lt;/a&gt;. The sample contains 100 observations and 7200 features and it is available &lt;a href=&quot;[https://github.com/KunyuHe/Stats-and-ML-Publications/blob/master/SVD%20in%20ML/Underdetermined%20Least%20Squares/data/sample.mat](https://github.com/KunyuHe/Stats-and-ML-Publications/blob/master/SVD in ML/Underdetermined Least Squares/data/sample.mat)&quot;&gt;here&lt;/a&gt;. Each observation is a joke and each feature is a known rating on that joke from an existing user, at a scale of -10 to 10.&lt;/p&gt;
-
-&lt;p&gt;Suppose that we work for a company that makes joke recommendations to customers based on their known ratings. For a new customer Joan who has rated 25 jokes, we want to be able to know how she would like the remaining 75 jokes and recommend her the one with the highest predicted rating.&lt;/p&gt;
-
-&lt;p&gt;To do that, consider $m$ ($m \le 7200$) users whose ratings on the 100 jokes are known to us. They represent a diverse set of tastes. We can think of Joan’s ratings as a weighted sum of these customers’ ratings. Then, we will use the 25 joke ratings by these $m$ customers as features and Joan’s known ratings as the target to train a regressor. It should be able to generalize to other jokes that Joan hasn’t rated yet with good predictions so that we can recommend the one with the highest predicted score. Joan’s ratings are available &lt;a href=&quot;[https://github.com/KunyuHe/Stats-and-ML-Publications/blob/master/SVD%20in%20ML/Underdetermined%20Least%20Squares/data/joan.mat](https://github.com/KunyuHe/Stats-and-ML-Publications/blob/master/SVD in ML/Underdetermined Least Squares/data/joan.mat)&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Load data and split it into training and test set with the following chunk. Note that Joan’s unknown ratings are represented as -99.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/KunyuHe/88f8e5f7871959b6fbea22618e160923.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;When $m = 20$, we would use the first 20 users as our representative users for simplicity. We will solve for the weights with their ratings on the 25 jokes that Joan has rated as features and Joan’s ratings as the target. The linear system is overdetermined. When $m = 7200$, the linear system is underdetermined. Use the following codes to prepare the data.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/KunyuHe/5fd3e9e2406625775e29626b89e11614.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;A &lt;a href=&quot;https://scikit-learn.org/&quot;&gt;scikit-learn&lt;/a&gt; style least-squares estimator using SVD is implemented as follows:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/KunyuHe/99d484a04ed054386451a219be704c29.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;I got &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;True&lt;/code&gt; for both $m = 20$ and $m = 7200$. Feel free to verify it yourself.&lt;/p&gt;
-
-&lt;p&gt;To illustrate how underdetermined least squares provides a perfect fit to the training data, we can visualize the predicted values and the true target on both training and test sets.&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;&lt;img src=&quot;/img/in-post/svdund-1.png&quot; /&gt;&lt;/div&gt;
-
-&lt;p&gt;Corresponding codes is available below.&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/KunyuHe/4704d78c1c4b2fbd1f082d4372cf2e22.js&quot;&gt;&lt;/script&gt;
-
-&lt;hr /&gt;
-
+&lt;h1 id=&quot;theory&quot;&gt;Theory&lt;/h1&gt;
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;Disentangling Adversarial Robustness and Generalization&lt;/strong&gt; [&lt;a href=&quot;https://openaccess.thecvf.com/content_CVPR_2019/html/Stutz_Disentangling_Adversarial_Robustness_and_Generalization_CVPR_2019_paper.html&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+David Stutz, Matthias Hein, Bernt Schiele&lt;br /&gt;
+&lt;em&gt;CVPR, 2019&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;This blog was originally published on &lt;a href=&quot;https://medium.com/&quot;&gt;@Medium&lt;/a&gt; with &lt;a href=&quot;https://towardsdatascience.com/&quot;&gt;@Towards Data Science&lt;/a&gt; at &lt;a href=&quot;https://towardsdatascience.com/underdetermined-least-squares-feea1ac16a9&quot;&gt;this link&lt;/a&gt;.&lt;/p&gt;
+  &lt;p&gt;This papers shows that for a data manifold:&lt;/p&gt;
+  &lt;ol&gt;
+    &lt;li&gt;There are generally two types of adversarial examples: &lt;strong&gt;off-manifold&lt;/strong&gt; and &lt;strong&gt;on-manifold&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;On-manifold&lt;/strong&gt; adversarial examples are generalization errors, and on-manifold adversarial training improves generalization.&lt;/li&gt;
+    &lt;li&gt;Regular robutsness and generalization are not contradicting.&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
 
+&lt;p&gt;&lt;strong&gt;Guess First to Enable Better Compression and Adversarial Robustness&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2001.03311&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Sicheng Zhu, Bang An, Shiyu Niu&lt;br /&gt;
+&lt;em&gt;Information Theory and Machine Learning Workshop, NIPS, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper shows that better compression ($I(X; Z)$) and less label information ($I(Z; Y)$) improves adversarial robustness. This two properties can be useful in designing robust AEs for downstream tasks.  &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;Towards a Theoretical Understanding of the Robustness of Variational Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2007.07365&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Alexander Camuto, Matthew Willetts, Stephen Roberts, Chris Holmes, Tom Rainforth&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper provides a general metric to evaluate the robustness of probabilitic models: $r$-robustness.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Specifically, it shows that we are able to define a region which which any perturbation will produce a reconstruction similar to the original reconstruction.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;models&quot;&gt;Models&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Relational Autoencoder for Feature Extraction&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1802.03145&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Qinxue Meng, Daniel Catchpoole, David Skillicorn, Paul J. Kennedy&lt;br /&gt;
+&lt;em&gt;International Joint Conference on Neural Networks (ICJNN), 2017&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;World Models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1803.10122&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://worldmodels.github.io/&quot;&gt;website&lt;/a&gt;] [&lt;a href=&quot;https://www.youtube.com/watch?v=HzA8LRqhujk&amp;amp;feature=youtu.be&quot;&gt;talk&lt;/a&gt;]   &lt;br /&gt;
+David Ha, Jürgen Schmidhuber&lt;br /&gt;
+&lt;em&gt;NIPS, 2018&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;One of the greatest paper in NIPS. Its subtitle is: &lt;em&gt;Can Agents Learn Inside of Their Own Dreams?&lt;/em&gt;&lt;br /&gt;
+The World Model can be conceived as this two-stage process:&lt;/p&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Learn a &lt;strong&gt;compressed&lt;/strong&gt; representation of the environment in an &lt;strong&gt;unsupervised manner&lt;/strong&gt;;&lt;/li&gt;
+    &lt;li&gt;Use the learned representation to train a policy to solve downstream tasks.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Supervised Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://papers.nips.cc/paper/7296-supervised-autoencoders-improving-generalization-performance-with-unsupervised-regularizers.pdf&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Lei Le, Andrew Patterson, Martha White&lt;br /&gt;
+&lt;em&gt;NIPS, 2018&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;From Variational to Deterministic Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://openreview.net/forum?id=S1g7tpEYDS&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://github.com/ParthaEth/Regularized_autoencoders-RAE-&quot;&gt;code&lt;/a&gt;]&lt;br /&gt;
+Partha Ghosh, Mehdi S. M. Sajjadi, Antonio Vergari, Michael Black, Bernhard Scholkopf&lt;br /&gt;
+&lt;em&gt;ICLR, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Parameterized Rate-Distortion Stochastic Encoder&lt;/strong&gt;  [&lt;a href=&quot;https://icml.cc/virtual/2020/poster/6252&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Quan Hoang, Trung Le, Dinh Phung&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Provably robust deep generative models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2004.10608&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Filipe Condessa, Zico Kolter&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;applications&quot;&gt;Applications&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Learning Visual Feature Spaces for Robotic Manipulation with Deep Spatial Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1509.06113&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Chelsea Finn, Xin Yu Tan, Yan Duan, Trevor Darrell, Sergey Levine, Pieter Abbeel&lt;br /&gt;
+&lt;em&gt;International Conference on Robotics and Automation (ICRA), 2015&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reinforcement Learning on Robot with Variational Auto-Encoder&lt;/strong&gt; [&lt;a href=&quot;https://link.springer.com/chapter/10.1007/978-981-15-0474-7_63&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Yiwen Chen, Chenguang Yang, Ying Feng&lt;br /&gt;
+&lt;em&gt;International Conference on Modelling, Identification and Control (ICMIC), 2019&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Autoencoder-Based Transfer Learning in Brain Computer Interface&lt;/strong&gt; [&lt;a href=&quot;https://journals.sagepub.com/doi/pdf/10.1177/1729881419840860&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Chuanqi Tan, Fuchun Sun, Bin Fang, Tao Kong, Wenchang Zhang&lt;br /&gt;
+&lt;em&gt;International Journal of Advanced Robotic Systems (IJARS), 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This authors propose to use autoencoder to extract EEG data; the extracted features are then used to do classification tasks. One interesting thing is that to tackle the sample scarcity in training the autoencoder, they first &lt;strong&gt;transfer from ImageNet&lt;/strong&gt;.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Variational Autoencoder for Semi-supervised Text Classification&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1603.02514&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Weidi Xu, Haoze Sun, Chao Deng, Ying Tan&lt;br /&gt;
+&lt;em&gt;AAAI, 2017&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Deep Patient: An Unsupervised Representation to Predict the Future of Patients from the Electronic Health Records&lt;/strong&gt; [&lt;a href=&quot;https://www.semanticscholar.org/paper/Deep-Patient%3A-An-Unsupervised-Representation-to-the-Miotto-Li/18c39ba04333d31c6cb10faf79d1f18692c38d0f&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+R. Miotto, Li Li, B. Kidd, J. Dudley&lt;br /&gt;
+&lt;em&gt;Scientific Reports, 2016&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper uses a 3-layer denoising autoencoder to learn representations for raw EHR data.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Semi-Supervised Learning of the Electronic Health Record for Phenotype Stratification&lt;/strong&gt; [&lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S153204641630140X&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Brett K. Beaulieu-Jonesab, Casey S. Green&lt;br /&gt;
+&lt;em&gt;Journal of Biomedical Informatics, 2016&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper uses the enoising autoencoder with the random forest classifier to predict survival rates of patients.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Representation Learning with Autoencoders for Electronic Health Records: A Comparative Study&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1801.02961&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Najibesadat Sadati, Milad Zafar Nezhad, Ratna Babu Chinnam, Dongxiao Zhu&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper gives a general framework of using autoencoder to extract features of EHR data, then build prediction models on top of them.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Deep Manifold Preserving Autoencoder for Classifying Breast Cancer Histopathological Images&lt;/strong&gt;  [&lt;a href=&quot;https://ieeexplore.ieee.org/document/8417906&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Yangqin Feng, Lei Zhang, Juan Mo&lt;br /&gt;
+&lt;em&gt;IEEE/ACM Transactions on Computational Biology and Bioinformatics, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper uses a simple structure: a pretrained encoder plus a softmax classifier.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;attacks&quot;&gt;Attacks&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Adversarial Images for Variational Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1612.00155&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://github.com/tabacof/adv_vae&quot;&gt;code&lt;/a&gt;]&lt;br /&gt;
+Pedro Tabacof, Julia Tavares, Eduardo Valle&lt;br /&gt;
+&lt;em&gt;PAdversarial Training Workshop (NIPS, 2016)&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Attacks on Variational Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1806.04646&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+George Gondim-Ribeiro, Pedro Tabacof, Eduardo Valle &lt;br /&gt;
+&lt;em&gt;CoRR, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Examples for Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8424630/&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Jernej Kos, Ian Fischer, Dawn Song&lt;br /&gt;
+&lt;em&gt;IEEE S&amp;amp;P Workshops, 2018&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Provides 3 different schemes resulting in reconstruction change.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Constructing Unrestricted Adversarial Examples with Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1805.07894&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://github.com/ermongroup/generative_adversary&quot;&gt;code&lt;/a&gt;]&lt;br /&gt;
+Yang Song, Rui Shu, Nate Kushman, Stefano Ermon&lt;br /&gt;
+&lt;em&gt;NIPS, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;LatentPoison - Adversarial Attacks On The Latent Space&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1711.02879v1&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Antonia Creswell, Anil A. Bharath, Biswa Sengupta&lt;br /&gt;
+&lt;em&gt;Rejected by ICLR, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;When Deep Fool Meets Deep Prior: Adversarial Attack on Super-Resolution Network&lt;/strong&gt; [&lt;a href=&quot;https://scholar.google.com/scholar_url?url=https://dl.acm.org/doi/abs/10.1145/3240508.3240603%3Fcasa_token%3DmVORIJYgzAMAAAAA:xEcap40LdiR67ExAX_Fw4RPCEOIEVS6iyt7jpLpNcpwWNfpQqBYbEISJpKGdCKUhLAdYsqoLdwpYsQ&amp;amp;hl=en&amp;amp;sa=T&amp;amp;oi=gsb&amp;amp;ct=res&amp;amp;cd=0&amp;amp;d=9750722567383918778&amp;amp;ei=5m4yX_ewIbuB6rQPkoaAuAc&amp;amp;scisig=AAGBfm1V9jZxniRZjaQDzvt_iilCt1Je9g&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Minghao Yin, Yongbing Zhang, Xiu Li, Shiqi Wang&lt;br /&gt;
+&lt;em&gt;Proceedings of the 26th ACM international conference on Multimedia (MM, 2018)&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Out-domain Examples for Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://ieeexplore.ieee.org/abstract/document/8802456/?casa_token=5pJGy5iWsJgAAAAA:z10cWZLFJOM-ArPQgnMsWOueed-0OqhGxLziBxmLjjqMVRdJnzIaJ1AIoL0kk9YN1bPHi8twbQ&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+D. Pasquini, M. Mingione, M. Bernaschi&lt;br /&gt;
+&lt;em&gt;IEEE European Symposium on Security and Privacy Workshops (Euro S&amp;amp;PW, 2019)&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Generalizable Adversarial Attack Using Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://www.semanticscholar.org/paper/Generalizable-Adversarial-Attacks-Using-Generative-Bose-Cianflone/36fe8897e24c0f990d2e23259b396765891424aa&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Avishek Joey Bose, Andre Cianflone, William L. Hamilton&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;It seems that the idea is that adversarial attacks can be viewed as a generative modelling problem, i.e. given an unperturbed input, generate an adversarial example. The authors achieves this by an encoder-decoder framework.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Performing Co-Membership Attacks Against Deep Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1805.09898v3&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Kin Sum Liu, Chaowei Xiao, Bo Li, Jie Gao&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Man-in-the-Middle Attacks against Machine Learning Classifiers via Malicious Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1910.06838v1&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Derui Wang, Chaoran Li, Sheng Wen, Surya Nepal, Yang Xiang&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Attack Type I: Cheat Classifiers by Significant Changes&lt;/strong&gt;  &lt;a href=&quot;https://arxiv.org/abs/1809.00594v2&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Sanli Tang, Xiaolin Huang, Mingjian Chen, Chengjin Sun, Jie Yang&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;An attack on classifiers using gradient information from the latent space of autoencoders.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Type I Attack for Generative Models&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2003.01872&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Chengjin Sun, Sizhe Chen, Jia Cai, Xiaolin Huang&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;One example attack on VAE by this paper is that the proposed attack can change an original image significantly to a meaningless one but their reconstruction results are similar.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Towards Feature Space Adversarial Attack&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2004.12385&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Xu Q, Tao G, Cheng S, Tan L, Zhang X.&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BAAAN: Backdoor Attacks Against Autoencoder and GAN-Based Machine Learning Models&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2010.03007&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Ahmed Salem, Yannick Sautter, Michael Backes, Mathias Humbert, Yang Zhang&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;An Adversarial Attack against Stacked Capsule Autoencoder&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2010.07230v1&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Jiazhu Dai, Siwei Xiong&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Poison Attacks against Text Datasets with Conditional Adversarially Regularized Autoencoder&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2010.02684v1&quot;&gt;[link]&lt;/a&gt; &lt;br /&gt;
+Alvin Chan, Yi Tay, Yew-Soon Ong, Aston Zhang &lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;T3: Tree-Autoencoder Constrained Adversarial Text Generation for Targeted Attack&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/1912.10375v2&quot;&gt;[link]&lt;/a&gt; &lt;br /&gt;
+Boxin Wang, Hengzhi Pei, Boyuan Pan, Qian Chen, Shuohang Wang, Bo Li&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Don’t Trigger Me! A Triggerless Backdoor Attack Against Deep Neural Networks&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2010.03282v1&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Ahmed Salem, Michael Backes, Yang Zhang&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Though irrelevant to AE, this paper discusses a type of backdoor attack without triggers which may potentically influence the applications on AE.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;On Breaking Deep Generative Model-based Defenses and Beyond&lt;/strong&gt; [&lt;a href=&quot;https://proceedings.icml.cc/static/paper_files/icml/2020/2236-Paper.pdf&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Yanzhi Chen, Renjie Xie, Zhanxing Zhu&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;defenses&quot;&gt;Defenses&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Deep Variational Information Bottleneck&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1612.00410&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Alexander A. Alemi, Ian Fischer, Joshua V. Dillon, Kevin Murphy&lt;br /&gt;
+&lt;em&gt;ICLR, 2017&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Defense of Image Classification Using a Variational Auto-Encoder&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1812.02891&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Yi Luo, Henry Pfister&lt;br /&gt;
+&lt;em&gt;Preprint, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Combatting Adversarial Attacks through Denoising and Dimensionality Reduction: A Cascaded Autoencoder Approach&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1812.03087v1&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Rajeev Sahay, Rehana Mahfuz, Aly El Gamal&lt;br /&gt;
+&lt;em&gt;Preprint, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣🧑🏻‍🚀 &lt;strong&gt;Are Generative Classifiers More Robust to Adversarial Attacks?&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/pdf/1802.06552v3.pdf&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://github.com/deepgenerativeclassifier/DeepBayes&quot;&gt;code&lt;/a&gt;] &lt;br /&gt;
+Yingzhen Li, John Bradshaw, Yash Sharma   &lt;br /&gt;
+&lt;em&gt;Rejected by ICLR Workshop, 2018; then accepted by ICML, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper is more on the robustness of bayes classifiers compared to deterministic classifiers.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Notably, it applies generative modeling (variational inference) to improve original bayes classifers.&lt;/li&gt;
+    &lt;li&gt;It implies that, generative models may fascilitate gradient masking which in turn become more robust to attacks. The stochastic nature of generative models may play an important role for gradient masking.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Sufficient Conditions for Robustness to Adversarial Examples: a Theoretical and Empirical Study with Bayesian Neural Networks&lt;/strong&gt;  [&lt;a href=&quot;https://openreview.net/forum?id=B1eZRiC9YX&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+&lt;em&gt;Rejected by ICLR Workshop, 2019&lt;/em&gt; &lt;br /&gt;
+Yarin Gal, Lewis Smith&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper proves, under two sufficient conditions, that idealised models can have no adversarial examples.&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;Improving VAE’s Robutsness to Adversarial Attacks&lt;/strong&gt; [&lt;a href=&quot;http://www.robots.ox.ac.uk/~twgr/assets/pdf/willetts2020disentangling.pdf&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+M Willetts, A Camuto, S Roberts, C Holmes&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper introduces a hierarchical VAE which can improve adverarial robustness while preserving reconstruction ability.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;This idea is based on the observation that disentangled representation improves robustness yet reducing the quality of reconsturction ability.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Certified Robustness to Adversarial Examples with Differential Privacy&lt;/strong&gt;  [&lt;a href=&quot;https://arxiv.org/abs/1802.03471&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Mathias Lecuyer, Vaggelis Atlidakis, Roxana Geambasu, Daniel Hsu, Suman Jana&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper provides a defense which could be done in the feature space (by adversarial smoothing).&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Evaluating Robustness of Deep Image Super-Resolution Against Adversarial Attacks&lt;/strong&gt; [&lt;a href=&quot;http://openaccess.thecvf.com/content_ICCV_2019/html/Choi_Evaluating_Robustness_of_Deep_Image_Super-Resolution_Against_Adversarial_Attacks_ICCV_2019_paper.html&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+J. Choi, H. Zhang, J. Kim, C. Hsieh, J. Lee &lt;br /&gt;
+&lt;em&gt;ICCV, 2019&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Resisting Adversarial Attacks Using Gaussian Mixture Variational Autoencoders&lt;/strong&gt; [&lt;a href=&quot;https://www.aaai.org/ojs/index.php/AAAI/article/view/3828&quot;&gt;link&lt;/a&gt;] [&lt;a href=&quot;https://www.youtube.com/watch?v=JfggOIjGEY8&quot;&gt;video&lt;/a&gt;] [&lt;a href=&quot;https://towardsdatascience.com/resisting-adversarial-attacks-using-gaussian-mixture-variational-autoencoders-be98e69b5070&quot;&gt;blog&lt;/a&gt;]   &lt;br /&gt;
+Partha Ghosh, Arpan Losalka, Michael J. Black&lt;br /&gt;
+&lt;em&gt;AAAI, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper is also relevant to VampPrior VAE (&lt;a href=&quot;http://proceedings.mlr.press/v84/tomczak18a/tomczak18a.pdf&quot;&gt;link&lt;/a&gt;, &lt;a href=&quot;https://jmtomczak.github.io/pdf/Tubingen_presentation_22_03_2018.pdf&quot;&gt;slides&lt;/a&gt;).
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Defense-VAE: A Fast and Accurate Defense Against Adversarial Attacks&lt;/strong&gt; [&lt;a href=&quot;https://link.springer.com/chapter/10.1007/978-3-030-43887-6_15&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Xiang Li, Shihao Ji &lt;br /&gt;
+&lt;em&gt;PKDD, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper uses VAE to purge adversarial perturbations from contaminated images, and shows this preprocessing can help defend both white-box and black-box attacks.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Bridging Adversarial Robustness and Gradient Interpretability&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1903.11626&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Beomsu Kim, Junghoon Seo, Taegyun Jeon&lt;br /&gt;
+&lt;em&gt;Safe Machine Learning Worshop of ICLR, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;This papers shows that adversarial training makes gradients more interpretable.&lt;/li&gt;
+    &lt;li&gt;It also shows that there is a trade-off between test accuracy and gradient interpretability.&lt;/li&gt;
+    &lt;li&gt;It then provides ways to mitigate this trade-off.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;Adversarially Robust Representations with Smooth Encoders&lt;/strong&gt; [&lt;a href=&quot;https://openreview.net/forum?id=H1gfFaEYDS&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Taylan Cemgil, Sumedh Ghaisas, Krishnamurthy (Dj) Dvijotham, Pushmeet Kohli&lt;br /&gt;
+&lt;em&gt;ICLR, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Evaluating the Robustness of Defense Mechanisms based on AutoEncoder Reconstructions against Carlini-Wagner Adversarial Attacks&lt;/strong&gt; &lt;a href=&quot;https://septentrio.uit.no/index.php/nldl/article/view/5173&quot;&gt;[link]&lt;/a&gt; &lt;br /&gt;
+Petru Hlihor, Riccardo Volpi, Luigi Malagò &lt;br /&gt;
+&lt;em&gt;Proceedings of the Northern Lights Deep Learning Workshop, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Similar to the above one, this paper shows that reconstruction by autoencoders is an effective preprocessing approach on images to defend common adversarial attacks.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Double Backpropagation for Training Autoencoders against Adversarial Attack&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2003.01895&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Chengjin Sun, Sizhe Chen, Xiaolin Huang&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper proposes a training procedure to enhance the robustness of AEs.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;It is based on the observation that AEs are sensitive to inputs, i.e., one can slightly modify an input but has totally different codes.&lt;/li&gt;
+    &lt;li&gt;Therefore, the authors restrict gradients from the reconstruction image to the original one, making AEs less sensitive to small perturbation.
+&lt;br /&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Defending Adversarial Attacks via Semantic Feature Manipulation&lt;/strong&gt;  [&lt;a href=&quot;https://arxiv.org/abs/2002.02007&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Shuo Wang, Tianle Chen, Surya Nepal, Carsten Rudolph, Marthie Grobler, Shangyu Chen&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ARAE: Adversarially Robust Training of Autoencoders Improves Novelty Detection&lt;/strong&gt;  [&lt;a href=&quot;https://arxiv.org/abs/2003.05669&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Mohammadreza Salehi, Atrin Arya, Barbod Pajoum, Mohammad Otoofi, Amirreza Shaeiri, Mohammad Hossein Rohban, Hamid R. Rabiee&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🐣 &lt;strong&gt;Metrics and Methods for Robustness Evaluation of Neural Networks with Generative Models&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2003.01993v2&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Igor Buzhinsky, Arseny Nerinovsky, Stavros Tripakis&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper provides &lt;em&gt;latent space performance metrics&lt;/em&gt; to evaluate models’ robustness.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;miscellaneous&quot;&gt;Miscellaneous&lt;/h1&gt;
+&lt;p&gt;(&lt;em&gt;This section can be skipped. It is not so relevant to autoencoder and is more on adversarial attacks of feature space.&lt;/em&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perturbation Analysis of Learning Algorithms: A Unifying Perspective on Generation of Adversarial Examples&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/1812.07385&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Emilio Rafael Balda, Arash Behboodi, Rudolf Mathar&lt;br /&gt;
+&lt;em&gt;Preprint, 2018&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Robustness Analysis of Deep Neural Networks in the Presence of Adversarial Perturbations and Noisy Labels&lt;/strong&gt; [&lt;a href=&quot;https://www.ti.rwth-aachen.de/diss/Emilio_Rafael_Balda.pdf&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Emilio Rafael Balda Cañizares&lt;br /&gt;
+&lt;em&gt;Preprint, 2019&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This paper provides an information-theoretical view on learning with noisy labels.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Protecting Against Image Translation Deepfakes by Leaking Universal Perturbations from Black-Box Neural Networks&lt;/strong&gt; [&lt;a href=&quot;https://arxiv.org/abs/2006.06493&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Nataniel Ruiz, Sarah Adel Bargal, Stan Sclaroff&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DAPAS : Denoising Autoencoder to Prevent Adversarial attack in Semantic Segmentation&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/1908.05195v4&quot;&gt;[link]&lt;/a&gt;&lt;br /&gt;
+Seungju Cho, Tae Joon Jun, Byungsoo Oh, Daeyoung Kim&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;🧑🏻‍🚀 &lt;strong&gt;Double Backpropagation for Training Autoencoders against Adversarial Attack&lt;/strong&gt; &lt;a href=&quot;https://arxiv.org/abs/2003.01895v1&quot;&gt;[link]&lt;/a&gt; &lt;br /&gt;
+Chengjin Sun, Sizhe Chen, Xiaolin Huang&lt;br /&gt;
+&lt;em&gt;Preprint, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The paper provides a gradient smoothing method specially designed for Autoencoder models.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Randomization matters How to defend against strong adversarial attacks&lt;/strong&gt; [&lt;a href=&quot;https://icml.cc/virtual/2020/poster/6157&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Rafael Pinot, Raphael Ettedgui, Geovani Rizk, Yann Chevaleyre, Jamal Atif&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Understanding and Mitigating the Tradeoff between Robustness and Accuracy&lt;/strong&gt; [&lt;a href=&quot;https://icml.cc/virtual/2020/poster/6801&quot;&gt;link&lt;/a&gt;]&lt;br /&gt;
+Aditi Raghunathan, Sang Michael Xie, Fanny Yang, John Duchi, Percy Liang&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Traditional undertanding is that there exists a tradeoff between robust error (i.e. perturbed worst-case ones) and standard error (i.e. unperturbed ones). This paper suggests that this tradeoff can be well mitigated, i.e. we can improve robust error and standard error at the same time.
+&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Randomized Smoothing of All Shapes and Sizes&lt;/strong&gt; [&lt;a href=&quot;https://icml.cc/virtual/2020/poster/6327&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Greg Yang, Tony Duan, J. Edward Hu, Hadi Salman, Ilya Razenshteyn, Jerry Li&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adversarial Neural Pruning with Latent Vulnerability Suppression&lt;/strong&gt; [&lt;a href=&quot;https://icml.cc/virtual/2020/poster/5877&quot;&gt;link&lt;/a&gt;] &lt;br /&gt;
+Divyam Madaan, Jinwoo Shin, Sung Ju Hwang&lt;br /&gt;
+&lt;em&gt;ICML, 2020&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;blockquote&gt;
   &lt;p&gt;Background picture source: &lt;a href=&quot;https://pixabay.com/de/users/timhill-5727184/&quot;&gt;TimHill&lt;/a&gt; on &lt;a href=&quot;https://pixabay.com/&quot;&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Tue, 31 Dec 2019 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/2019/12/31/SVD-in-Machine-Learning-Underdetermined-Least-Squares/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2019/12/31/SVD-in-Machine-Learning-Underdetermined-Least-Squares/</guid>
+        <link>http://0.0.0.0:4000/2019/12/31/Awesome-Representation-Learning-for-Autoencoders/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2019/12/31/Awesome-Representation-Learning-for-Autoencoders/</guid>
         
-        <category>Machine Learning</category>
+        <category>Deep Learning</category>
         
-        <category>Linear Regression</category>
+        <category>Autoencoders</category>
         
-        <category>SVD</category>
+        <category>Literature Review</category>
         
         
       </item>
