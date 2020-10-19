@@ -5,8 +5,8 @@
     <description>Ziyu Ye</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Jul 2020 22:15:32 -0500</pubDate>
-    <lastBuildDate>Sun, 19 Jul 2020 22:15:32 -0500</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2020 16:34:08 +0800</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2020 16:34:08 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
     
       <item>
@@ -95,7 +95,7 @@
   &lt;p&gt;Background picture source: &lt;a href=&quot;https://pixabay.com/de/users/timhill-5727184/&quot;&gt;TimHill&lt;/a&gt; on &lt;a href=&quot;https://pixabay.com/&quot;&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-        <pubDate>Tue, 31 Dec 2019 00:00:00 -0600</pubDate>
+        <pubDate>Tue, 31 Dec 2019 00:00:00 +0800</pubDate>
         <link>http://0.0.0.0:4000/2019/12/31/SVD-in-Machine-Learning-Underdetermined-Least-Squares/</link>
         <guid isPermaLink="true">http://0.0.0.0:4000/2019/12/31/SVD-in-Machine-Learning-Underdetermined-Least-Squares/</guid>
         
