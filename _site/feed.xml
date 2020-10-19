@@ -5,8 +5,8 @@
     <description>Ziyu Ye</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Oct 2020 17:42:53 +0800</pubDate>
-    <lastBuildDate>Mon, 19 Oct 2020 17:42:53 +0800</lastBuildDate>
+    <pubDate>Mon, 19 Oct 2020 17:45:00 +0800</pubDate>
+    <lastBuildDate>Mon, 19 Oct 2020 17:45:00 +0800</lastBuildDate>
     <generator>Jekyll v4.1.0</generator>
     
       <item>
@@ -480,9 +480,9 @@ Divyam Madaan, Jinwoo Shin, Sung Ju Hwang&lt;br /&gt;
   &lt;p&gt;Background picture source: &lt;a href=&quot;https://pixabay.com/de/users/timhill-5727184/&quot;&gt;TimHill&lt;/a&gt; on &lt;a href=&quot;https://pixabay.com/&quot;&gt;Pixabay&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
-        <pubDate>Tue, 31 Dec 2019 00:00:00 +0800</pubDate>
-        <link>http://0.0.0.0:4000/2019/12/31/Awesome-Representation-Learning-for-Autoencoders/</link>
-        <guid isPermaLink="true">http://0.0.0.0:4000/2019/12/31/Awesome-Representation-Learning-for-Autoencoders/</guid>
+        <pubDate>Mon, 19 Oct 2020 00:00:00 +0800</pubDate>
+        <link>http://0.0.0.0:4000/2020/10/19/Awesome-Representation-Learning-for-Autoencoders/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2020/10/19/Awesome-Representation-Learning-for-Autoencoders/</guid>
         
         <category>Deep Learning</category>
         

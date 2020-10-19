@@ -2,7 +2,7 @@
 layout:     post
 title:      "Awesome Representation learning for Autoencoders."
 subtitle:   "A literature review."
-date:       2019-12-31
+date:       2020-10-19
 author:     "Ziyu Ye"
 header-img: "img/post-bg-svdund.jpg"
 catalog:    true
