@@ -1,3 +1,21 @@
+---
+layout:     post
+title:      "Information Directed Sampling Revisited"
+subtitle:   "A random note"
+date:       2021-05-14
+author:     "Ziyu Ye"
+header-img: "img/post-bg-svdund.jpg"
+catalog:    true
+mathjax:    true
+tags:
+    - Bandits
+    - IDS
+---
+
+Last updated on October, 2020.
+
+---
+
 # Information Directed Sampling Revisited
 *This is an additional note to my [previous note](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/21-05-10-notes-IDS.md). Also see the new [paper list on IDS](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/Paper-List-on-Information-Directed-Sampling.md), and the [note on Andreas Krause's IMSI talk](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/21-05-10-notes-IMSI-workshop.md).*
 
