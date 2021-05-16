@@ -18,9 +18,7 @@ tags:
 
 # 1. High-level Idea
 ### Decoupling *Exploitation* and *Exploration*
-\begin{equation}
-\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}}\\{\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}
-\end{equation}
+\begin{equation}\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}}\\{\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}\end{equation}
 
 As a decision-making policy, Information-Directed Sampling (IDS) is featured by its decoupling of exploitation and exploration in optimization:
 - **Exploitation** is governed by **immediate regret** $\Delta_{t}(\pi)$.
