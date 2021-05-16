@@ -12,6 +12,6 @@
 
 在研究中，我的志趣在於智能和學習 (intelligence & learning)。近年來，基於機器學習所開發的各類智能應用對我們的平凡生活帶來了許多的影響。然而，對於智能本身，一些最基本的問題還遠遠談不上解決。無根之木，難以參天。在未來，我希望能夠通過自己的工作，發掘現有的問題，理解產生這些問題的本質，並據此設計出更好的智能。
 
-Debug 時出現的無聊幻想：如果努力向上，總有一天[蓋鳴暉](https://zh.wikipedia.org/wiki/%E8%93%8B%E9%B3%B4%E6%9A%89)會娶我的！（注：蓋鳴暉小姐是著名粵劇藝術家，在舞台上是文武生，亦可應花旦。我最喜歡的她的幾齣戲是[<梁祝之樓台會>](https://www.bilibili.com/video/BV1st4y167Cj?from=search&seid=13772850642306707959)和[<南唐李後主之去國歸降>](https://www.bilibili.com/video/BV19x411M7a9?from=search&seid=11317019935684779170)。我覺得她的表演，「真謂以血書者；儼有釋迦、基督擔荷人類罪惡之意」。）
+Debug 時出現的無聊幻想：如果努力向上，總有一天[蓋鳴暉](https://zh.wikipedia.org/wiki/%E8%93%8B%E9%B3%B4%E6%9A%89)會娶我的！（注：蓋鳴暉小姐是著名粵劇藝術家，在舞台上是文武生，亦可應花旦。我最喜歡的她的幾齣戲是<[梁祝之樓台會](https://www.bilibili.com/video/BV1st4y167Cj?from=search&seid=13772850642306707959)>和<[南唐李後主之去國歸降](https://www.bilibili.com/video/BV19x411M7a9?from=search&seid=11317019935684779170)>。我覺得她的表演，「真謂以血書者；儼有釋迦、基督擔荷人類罪惡之意」。）
 
-Last updated in 2020.
+*Last updated in 2020.*
