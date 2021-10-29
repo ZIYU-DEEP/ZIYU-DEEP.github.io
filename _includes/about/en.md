@@ -21,7 +21,7 @@
 
 Hey, this is Ziyu, a pursuer of machine intelligence.
 
-I am currently a Ph.D. student in [Computer Science at The University of Chicago](https://computerscience.uchicago.edu/). Before this, I completed my Master of Science degree of [Computational Analysis and Public Policy](https://capp.uchicago.edu/) there. I had my Bachelor of Economics degree at [The Special Class for the Gifted Young](https://www.wikiwand.com/en/Special_Class_for_the_Gifted_Young).
+I am currently a Ph.D. student in [Computer Science at The University of Chicago](https://computerscience.uchicago.edu/). Before this, I completed my Master of Science degree of [Computational Analysis and Public Policy](https://capp.uchicago.edu/) there. I had my Bachelor of Economics degree at [The Special Class for the Gifted Young](https://www.wikiwand.com/en/Special_Class_for_the_Gifted_Young). Here are my [Google Scholar](https://scholar.google.com/citations?user=S2da4LUAAAAJ&hl=en) and [LinkedIn](https://www.linkedin.com/in/ziyuye/) page.
 
 <!-- My research and working experience is available on [LinkedIn](https://www.linkedin.com/in/ziyuye/). My detailed CV is available upon request. -->
 
