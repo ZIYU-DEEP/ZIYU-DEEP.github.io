@@ -4,7 +4,7 @@ title:      "Information Directed Sampling Revisited"
 subtitle:   "A random note"
 date:       2021-05-14
 author:     "Ziyu Ye"
-header-img: "img/post-bg-svdund.jpg"
+header-img: "img/post-bg-ids.jpg"
 catalog:    true
 mathjax:    true
 tags:
@@ -18,7 +18,7 @@ tags:
 
 # 1. High-level Idea
 ### Decoupling *Exploitation* and *Exploration*
-\begin{equation}\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}}\\{\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}\end{equation}
+$$\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}} {\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}$$
 
 As a decision-making policy, Information-Directed Sampling (IDS) is featured by its decoupling of exploitation and exploration in optimization:
 - **Exploitation** is governed by **immediate regret** $\Delta_{t}(\pi)$.
@@ -56,7 +56,7 @@ $$\mathbb{E}[\operatorname{Regret}(T)]=\underset{r_{a}^{*} \sim p_{a^{*}}}{\math
 $$\Delta_{t}(a)=\underset{a^{*} \sim \alpha_{t} \atop r_{a^{*}, t} \sim \hat{p}_{a^{*}, t}}{\mathbb{E}}\left[r_{a^{*}, t} \mid \mathcal{F}_{t-1}\right]-\underset{r_{a, t} \sim \hat{p}_{a, t}}{\mathbb{E}}\left[r_{a, t} \mid \mathcal{F}_{t-1}\right]$$
 
 ### `Information Gain` $I_{t}(x)$
-$$\begin{aligned} I_{t}(a) &=I\left(a_{t}^{*}, r_{a, t}\right) \\ &=\underset{r_{i} \sim \hat{p}_{a,t}}\mathbb{E}\left[H\left(a_{t}^{*}\right)-H\left(a_{t+1}^{*}\right) \mid \mathcal{F}_{t-1}, a_{t}=a, r_{a, t}=r_{i}\right] \end{aligned}$$
+$$ I_{t}(a) =I\left(a_{t}^{*}, r_{a, t}\right) =\underset{r_{i} \sim \hat{p}_{a,t}}\mathbb{E}\left[H\left(a_{t}^{*}\right)-H\left(a_{t+1}^{*}\right) \mid \mathcal{F}_{t-1}, a_{t}=a, r_{a, t}=r_{i}\right] $$
 
 ### Optimization
 $$\pi_{t}^{I D S}=\arg \min _{\pi \in \mathcal{D}(\mathcal{A})}\left\{\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\right\}$$
