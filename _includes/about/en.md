@@ -19,6 +19,9 @@
 > My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way.    
 > – [Claude E. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon)
 
+
+## 🕹 Bio
+
 Hey, this is Ziyu, a pursuer of machine intelligence.
 
 I am currently a Ph.D. student in [Computer Science at The University of Chicago](https://computerscience.uchicago.edu/). Before this, I completed my Master of Science degree of [Computational Analysis and Public Policy](https://capp.uchicago.edu/) there. I had my Bachelor of Economics degree at [The Special Class for the Gifted Young](https://www.wikiwand.com/en/Special_Class_for_the_Gifted_Young). Here are my [Google Scholar](https://scholar.google.com/citations?user=S2da4LUAAAAJ&hl=en) and [LinkedIn](https://www.linkedin.com/in/ziyuye/) page.
@@ -32,3 +35,23 @@ Besides this, I am interested in economics, which provides powerful analytical t
 I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo) and [Joyce Koi](https://zh.wikipedia.org/wiki/%E8%93%8B%E9%B3%B4%E6%9A%89).
 
 *Last updated in 2020.*
+
+## 🕹 Research
+Papers listed below introduce facets of my research.
+#### Reinforcement Learning and Bandit Algorithms
+
+- [Don't be Pessimistic Too Early: Look K Steps Ahead](), *in submission*, 2023.
+- [Contextual Linear Bandits with Partial Information](), *working paper*, 2023.
+- [Online Decision Trees with Active Feature Acquisition](), *in submission*, 2023
+
+
+#### Quantum Computing and Machine Learning
+- [Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models](), *in submission*, 2023. [[code to be released](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
+- [Quantum Key Encapsulation Mechanism](), *working paper*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
+
+
+
+#### Deep Learning
+- [Generalization and Memorization in Sparse Neural Networks](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *ICML Workshop on Sparse Neural Networks*, 2022. [[code to be released](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)]
+
+- [Understanding the Bias of Deep Anomaly Detection](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)]
