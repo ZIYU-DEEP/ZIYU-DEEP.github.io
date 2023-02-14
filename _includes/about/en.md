@@ -46,7 +46,7 @@ Papers listed below introduce facets of my research.
 
 
 #### Quantum Computing and Machine Learning
-- [Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models](), *in submission*, 2023. [[code to be released](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
+- [Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models](), *under review by Nature Physics*, 2023. [[code to be released](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
 - [Quantum Key Encapsulation Mechanism](), *working paper*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
 
 
