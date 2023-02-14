@@ -32,7 +32,7 @@ In doing research, I was primarily driven by the curiosity to understand the lea
 
 Besides this, I am interested in economics, which provides powerful analytical tools in understanding outcomes by intelligent agents. Economics helps design high-level policies for real-world living problems, which improve social welfare. While I am studying the highly abstract problems as mentioned previously, I often, irrelevantly, feel a sense of guilty for those human beings suffering from mundane life problems (e.g. poverty, political oppression, etc.). I've spent some time in rural mountain areas and observed the difficulty for some people to "live" with dignity. In future, I hope I could also contribute my efforts to those problems and those people, instead of just staying comfortably with abstract machine thoughts.
 
-I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo) and [Joyce Koi](https://zh.wikipedia.org/wiki/%E8%93%8B%E9%B3%B4%E6%9A%89).
+I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo).
 
 *Last updated in 2020.*
 
