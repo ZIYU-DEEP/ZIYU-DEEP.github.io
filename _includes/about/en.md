@@ -34,7 +34,7 @@ Besides, I am interested in economics, which provides powerful analytical tools 
 
 I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo).
 
-*Last updated in 2020.*
+*The above bio is last updated in 2020.*
 
 ## 🕹 Research
 Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
