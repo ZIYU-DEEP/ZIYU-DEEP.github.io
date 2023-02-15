@@ -30,14 +30,14 @@ I am currently a Ph.D. student in [Computer Science at The University of Chicago
 
 In doing research, I was primarily driven by the curiosity to understand the learning mechanism of intelligence. The development of deep learning applications have influenced the quality of our life greatly in the last decade, however, the theoretical foundations of intelligence is far from established. There are lots of questions needed to be answered, and more questions needed to be asked. My goal is to identify and solve for the problems critical to understand learning mechanisms, and generalize principles useful for us to design better intelligent machines, which really think / learn / communicate with humans, as Shannon imagined a few decades ago. I understand the future work to be done by the 4 steps: to identify, to understand, to abstract, and to generalize.
 
-Besides this, I am interested in economics, which provides powerful analytical tools in understanding outcomes by intelligent agents. Economics helps design high-level policies for real-world living problems, which improve social welfare. While I am studying the highly abstract problems as mentioned previously, I often, irrelevantly, feel a sense of guilty for those human beings suffering from mundane life problems (e.g. poverty, political oppression, etc.). I've spent some time in rural mountain areas and observed the difficulty for some people to "live" with dignity. In future, I hope I could also contribute my efforts to those problems and those people, instead of just staying comfortably with abstract machine thoughts.
+Besides this, I am interested in economics, which provides powerful analytical tools in understanding outcomes by intelligent agents. Economics helps design high-level policies for real-world living problems, which improve social welfare. While I am studying the highly abstract problems as mentioned previously, I often feel a sense of guilty for human beings suffering from mundane life problems (e.g. poverty, political oppression, etc.). I've spent some time in rural mountain areas and observed the difficulty for some of us to "live" with dignity. In future, I wish to also contribute my efforts to those problems and those people, instead of just staying comfortably with abstract machine thoughts.
 
 I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo).
 
 *Last updated in 2020.*
 
 ## 🕹 Research
-Papers listed below introduce facets of my research.
+Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
 #### Reinforcement Learning and Bandit Algorithms
 
 - [Don't be Pessimistic Too Early: Look K Steps Ahead](), *in submission*, 2023.
