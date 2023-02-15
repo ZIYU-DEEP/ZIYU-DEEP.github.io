@@ -52,6 +52,6 @@ Papers listed below introduce facets of my research.
 
 
 #### Deep Learning
-- [Generalization and Memorization in Sparse Neural Networks](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *ICML Workshop on Sparse Neural Networks*, 2022. [[code to be released](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)]
+- [Generalization and Memorization in Sparse Neural Networks](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *ICML Workshop on Sparse Neural Networks*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)]
 
 - [Understanding the Bias of Deep Anomaly Detection](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)]
