@@ -41,6 +41,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 #### Reinforcement Learning and Bandit Algorithms
 
 - [Don't be Pessimistic Too Early: Look K Steps Ahead](), *in submission to NeurIPS*, 2023.
+    - 🦖 Check out our wonderful [intro slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf) 🦖!
 - [Contextual Linear Bandits with Partial Information](), *in submission to NeurIPS*, 2023.
 - [Online Decision Trees with Active Feature Acquisition](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023
 
@@ -53,5 +54,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 
 #### Deep Learning
 - [Generalization and Memorization in Sparse Neural Networks](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *ICML Workshop on Sparse Neural Networks*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)]
+    - 🦖 Check out my [notes on information in neural networks](https://ziyu-deep.github.io/files/info-sparse-notes.pdf) 🦖!
 
 - [Understanding the Bias of Deep Anomaly Detection](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)]
+    - 🦖 Check out my Pokémon style [intro slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf) 🦖!
