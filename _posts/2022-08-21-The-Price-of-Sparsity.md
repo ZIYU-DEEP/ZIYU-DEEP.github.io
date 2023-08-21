@@ -4,7 +4,7 @@ title:      "The Price of Sparsity"
 subtitle:   "Generalization and Memorization in Sparse Neural Networks"
 date:       2022-08-21
 author:     "Ziyu Ye"
-header-img: "img/post-bg-svdund.jpg"
+header-img: "img/post-bg-zhihu1.jpg"
 catalog:    true
 mathjax:    true
 tags:
@@ -25,7 +25,7 @@ The above is a challenging task due to the fundamental tradeoff between efficien
 
 
 <p align="center">
-  <img src="../img/in-post/sc-v-ft.png" alt="Description" width="600">
+  <img src="/img/in-post/sc-v-ft.png" alt="Description" width="600">
 </p>
 
 
@@ -36,7 +36,7 @@ The most efficient approach is to directly train a sparse neural network from sc
 In [[Evci et al., 2020]](https://arxiv.org/pdf/1906.10732.pdf), the authors compare `sparse scratch` and `sparse finetuning`, and find that even with the same pruning mask (which means the only difference lies in their initializations, `Init-S` and `Init-F`), the former still perform worse than the latter. We verify this phenomenon as below on CIFAR-100 with ResNet32 (for now, you may ignore the two regimes; we will explain it later).
 
 <p align="center">
-  <img src="../img/in-post/perf-gap.png" alt="Description" width="600">
+  <img src="/img/in-post/perf-gap.png" alt="Description" width="600">
 </p>
 
 This is not good. Sparse finetuning is a tortuous path and is still very computationally expensive. Is there a way for us to get rid of the dense pre-training phase while still achieving comparable generalization performance?
@@ -44,7 +44,7 @@ This is not good. Sparse finetuning is a tortuous path and is still very computa
 Things are not desperate.
 
 <p align="center">
-  <img src="../img/in-post/linear-path.png" alt="Description" width="300">
+  <img src="/img/in-post/linear-path.png" alt="Description" width="300">
 </p>
 
 In the above figure, we show that there exist a path, from `Init-S` to `Sol-F`, where the loss is almost monotonically decreasing (first discovered in [[Evci et al., 2020]](https://arxiv.org/pdf/1906.10732.pdf); the loss on the y-axis is computed by linearly interpolating between `Init-S` and `Sol-F`). This means that it is possible for `sparse scratch` to have the same results as `sparse finetuning`.

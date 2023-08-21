@@ -4,7 +4,7 @@ title:      "Information Directed Sampling Revisited"
 subtitle:   "A random note"
 date:       2021-05-14
 author:     "Ziyu Ye"
-header-img: "img/post-bg-ids.jpg"
+header-img: "img/post-bg-svdund.jpg"
 catalog:    true
 mathjax:    true
 tags:
