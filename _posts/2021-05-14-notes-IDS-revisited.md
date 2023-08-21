@@ -10,6 +10,7 @@ mathjax:    true
 tags:
     - Bandits
     - IDS
+    - Information
 ---
 
 *This is an additional note to my [previous note](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/21-05-10-notes-IDS.md). Also see the new [paper list on IDS](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/Paper-List-on-Information-Directed-Sampling.md), and the [note on Andreas Krause's IMSI talk](https://github.com/ZIYU-DEEP/efficient-online-decision-learning/blob/main/notes/21-05-10-notes-IMSI-workshop.md).*

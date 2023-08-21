@@ -38,23 +38,19 @@ I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo).
 
 ## 🕹 Research
 Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
+#### Deep Learning Theory and Applications
+
+- [**Understanding the Bias of Deep Anomaly Detection**](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)] [[slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf)]
+- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *SNN Workshop @ICML*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)]
+
+
 #### Reinforcement Learning and Bandit Algorithms
 
-- **Don't be Pessimistic Too Early: Look K Steps Ahead**, *in submission to NeurIPS*, 2023.
-    - 🦖 Check out our wonderful [intro slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf) 🦖!
-- **Contextual Linear Bandits with Partial Information**, *in submission to NeurIPS*, 2023.
+- **Don't be Pessimistic Too Early: Look K Steps Ahead**, *in submission to NeurIPS*, 2023. [[slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf)]
+- [**Contextual Linear Bandits with Partial Information**](https://openreview.net/pdf?id=JalSlVhRl6), *in submission to NeurIPS*, 2023.
 - [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023
 
 
-#### Quantum Computing and Machine Learning
+#### Avocation: Quantum Algorithms
 - [**Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models**](https://arxiv.org/abs/2303.03428), *under review by Nature*, 2023. [[code](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
-- **Quantum Key Encapsulation Mechanism**, *under review by Science*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
-
-
-
-#### Deep Learning
-- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *ICML Workshop on Sparse Neural Networks*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)]
-    - 🦖 Check out my [notes on information in neural networks](https://ziyu-deep.github.io/files/info-sparse-notes.pdf) 🦖!
-
-- [**Understanding the Bias of Deep Anomaly Detection**](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)]
-    - 🦖 Check out my Pokémon style [intro slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf) 🦖!
+- **Quantum Key Encapsulation Mechanism**, *under review by PNAS*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
