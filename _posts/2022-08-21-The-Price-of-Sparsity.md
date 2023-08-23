@@ -63,7 +63,7 @@ For the second question, the strategy is direct: to control (or stabilize) Fishe
 
 
 ## 3. A Tale of Two Regimes
-Remember that in Figure 2 (the excerpt from [[Evci et al., 2020]](https://arxiv.org/pdf/1906.10732.pdf)) shows that there is generalization gap. We further find that the generalization gap can be characterized by two regimes:
+Remember that in Figure 2 (the excerpt from [[Evci et al., 2020]](https://arxiv.org/pdf/1906.10732.pdf)) shows that there is generalization gap. We further find that, as the sparsity ratio increases, the generalization gap can be characterized by two regimes:
 - the generalization regime
 - the optimization regime
 
@@ -71,7 +71,15 @@ Remember that in Figure 2 (the excerpt from [[Evci et al., 2020]](https://arxiv.
   <img src="/img/in-post/perf-gap.png" alt="Description" width="600">
 </p>
 
-YZY is working on this: just discuss the mechanism in the two regimes. Fisher information for `sparse scratch` is higher than `sparse finetuning` in both regimes.
+To be specific, although there is a persistent generalization gap between `sparse scratch` and `sparse finetuning`, the underlying mechanism is different across different sparsity level.
+- In regime 1, there exist large generalization discrepancies for `sparse-scratch` and `sparse-finetuning` while they maintain almost the same near-optimal training accuracy. We denote this regime as the **generalization regime**.
+
+- In regime 2, there emerge large discrepancies on training accuracy as well. We denote this regime as the **optimization regime**.
+
+This observation gives us a convenient way to analyze the behaviors of those neural networks.
+
+
+We further found that Fisher information for `sparse scratch` is higher than `sparse finetuning` in both regimes.
 
 <p align="center">
   <img src="/img/in-post/toy-fisher.png" alt="Description" width="600">
