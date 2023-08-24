@@ -128,7 +128,14 @@ The high level idea here is that we can simply control the Fisher explosion (*cf
 
 
 ## Notes
-1. Traditional GPUs are optimized for dense computations. For sparse training to be really useful, it is necessary to improve such hardware support as well, e.g., they should be able to handle sparse matrix operations and optimize for the memory access pattern.
-2. The title is a tribute to `The Price of Salt`.
+1. The title is a tribute to `The Price of Salt`.
+2. Traditional GPUs are optimized for dense computations. For sparse training to be really useful, it is necessary to improve such hardware support as well, e.g., they should be able to handle sparse matrix operations and optimize for the memory access pattern.
 3. In this paper, our pruning procedure is confined to one-shot pruning; the next step is to extend to multi-shot pruning (*e.g.*, iterative pruning like in lottery tickets or dynamic pruning). Rewinding is a very beautiful concept. We would also extend the pruning criteria (currently we use magnitude-based approach; we can consider gradient-based approach etc).
 4. We plan to extend to work from classification tasks to generation tasks as well (*e.g.*, on both stable diffusion and LLAMA).
+5. Fisher information has close relationship to **loss curvature** (*i.e.*, Hessian, which is defined to be $\mathbf{H}(\boldsymbol{\theta})=\nabla_{\boldsymbol{\theta}}^2 \mathcal{L}(\boldsymbol{\theta})$) and **parameter sensitivity** (*i.e.*, Jacobian, which is defined to be $\mathbf{J}(\mathbf{x})=\nabla_{\mathbf{x}^{\mathrm{T}}} f(\mathbf{x} ; \boldsymbol{\theta})$), which were found to be relevant to the generalization performance. Below is our empirical findings.
+<p align="center">
+  <img src="/img/in-post/fisher-table.png" alt="Description" width="600">
+</p>
+
+6. After this paper, we found that `sparsity scratch` brings quantum enhancement (*cf.*, [[Liu et al., 2023](https://arxiv.org/pdf/2303.03428.pdf)]). Firstly, sparsity first allows for a practical interface between classical and quantum devices by efficient uploading through QRAM; secondly, the resulting dissipative nature of the network in the early stage (*i.e.*, more positive eigenvalues) brings exponential decay for the linearization error. To be specific, for a neural network with parameter size $n$ and sparsity $s$, running in $T$ iterations, there is a quantum algorithm runs with the following complexity and with error $\epsilon > 0$,
+$$\frac{s^3 T^2}{\epsilon^2} \operatorname{poly}\left(\log n, \log \frac{1}{\epsilon}\right).$$
