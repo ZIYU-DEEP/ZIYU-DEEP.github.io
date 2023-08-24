@@ -19,6 +19,25 @@
 > My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way.    
 > – [Claude E. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon)
 
+## 🕹 Research
+Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
+#### Deep Learning Theory and Applications
+
+- [**Understanding the Bias of Deep Anomaly Detection**](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)] [[slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf)]
+- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *SNN Workshop @ICML*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)] [[blog](https://ziyu-deep.github.io/2022/08/21/The-Price-of-Sparsity/)]
+
+
+#### Reinforcement Learning and Bandit Algorithms
+
+- **Don't be Pessimistic Too Early: Look K Steps Ahead**, *in submission to NeurIPS*, 2023. [[slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf)]
+- [**Contextual Linear Bandits with Partial Information**](https://openreview.net/pdf?id=JalSlVhRl6), *in submission to NeurIPS*, 2023.
+- [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023.
+
+
+#### Avocation: Quantum Algorithms
+- [**Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models**](https://arxiv.org/abs/2303.03428), *under review by Nature*, 2023. [[code](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
+- **Quantum Key Encapsulation Mechanism**, *under review by PNAS*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
+
 
 ## 🕹 Bio
 
@@ -35,22 +54,3 @@ Besides, I am interested in economics, which provides powerful analytical tools 
 I am a fan of [Ellen Loo](https://en.wikipedia.org/wiki/Ellen_Joyce_Loo).
 
 *The above bio is last updated in 2020.*
-
-## 🕹 Research
-Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
-#### Deep Learning Theory and Applications
-
-- [**Understanding the Bias of Deep Anomaly Detection**](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)] [[slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf)]
-- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *SNN Workshop @ICML*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)] [[blog](https://ziyu-deep.github.io/2022/08/21/The-Price-of-Sparsity/)]
-
-
-#### Reinforcement Learning and Bandit Algorithms
-
-- **Don't be Pessimistic Too Early: Look K Steps Ahead**, *in submission to NeurIPS*, 2023. [[slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf)]
-- [**Contextual Linear Bandits with Partial Information**](https://openreview.net/pdf?id=JalSlVhRl6), *in submission to NeurIPS*, 2023.
-- [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023. 
-
-
-#### Avocation: Quantum Algorithms
-- [**Provably Efficient Quantum Algorithms for Large-Scale Machine Learning Models**](https://arxiv.org/abs/2303.03428), *under review by Nature*, 2023. [[code](https://github.com/ZIYU-DEEP/quantum-sparse-training)]
-- **Quantum Key Encapsulation Mechanism**, *under review by PNAS*, 2023. [[partial code](https://github.com/ZIYU-DEEP/Post-Quantum-Crypto-for-Blockchains)]
