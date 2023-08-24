@@ -76,7 +76,7 @@ To be specific, although there is a persistent generalization gap between `spars
 
 - In regime 2, there emerge large discrepancies on training accuracy as well. We denote this regime as the **optimization regime**.
 
-This observation gives us a convenient way to analyze the behaviors of those neural networks.
+This observation gives us a convenient way to analyze the behaviors of those neural networks. In regime 1, we focus on the metrics pertaining to generalization (*e.g.*, Hessian, Jacobian, etc.), and in regime 2, we focus on the metrics pertaining to optimization
 
 
 We further found that Fisher information for `sparse scratch` is higher than `sparse finetuning` in both regimes.
@@ -90,23 +90,19 @@ We further found that Fisher information for `sparse scratch` is higher than `sp
 <p align="center">
   <img src="/img/in-post/algo-fisher.png" alt="Description" width="600">
 </p>
-yzy is working on this. The high level idea here is simply control the Fisher explosion by directly train with examples with low Fisher information during the critical early stage.
+
+The high level idea here is that we can simply control the Fisher explosion (*c.f.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
 
 ## 5. Technical Details for Fisher Information
-yzy is working on this.
-<!-- ## The Problem
-Training a sparse neural network from scratch cannot match the performance of training a sparse neural network from a pre-trained dense network.
 
-Existing work:
-- [Frankle et al., 2021](https://openreview.net/forum?id=Ig-VyQc-MLK):
-- [Stosic and Stosic, 2021](https://arxiv.org/abs/2105.12920): -->
 
 ## 6. Next steps
-- Extend the pruning criteria (currently we use magnitude-based approach; we can consider gradient-based approach etc.)
-- Extend the pruning procedure (*e.g.*, iterative pruning or dynamic pruning and growing)
+
 - Extend the work from classification tasks to generation tasks as well (*e.g.*, on both stable diffusion and LLAMA)
 - Discuss the further implication of this work
 
 ## Notes
 1. Traditional GPUs are optimized for dense computations. For sparse training to be really useful, it is necessary to improve such hardware support as well, e.g., they should be able to handle sparse matrix operations and optimize for the memory access pattern.
-2. The title is a tribute to `The Price of Salt`. i wish i were at the age of 19.
+2. The title is a tribute to `The Price of Salt`.
+3. In this paper, our pruning procedure is confined to one-shot pruning; the next step is to extend to multi-shot pruning (*e.g.*, iterative pruning like in lottery tickets or dynamic pruning). Rewinding is a very beautiful concept. We would also extend the pruning criteria (currently we use magnitude-based approach; we can consider gradient-based approach etc).
+4. We plan to extend to work from classification tasks to generation tasks as well (*e.g.*, on both stable diffusion and LLAMA).
