@@ -14,7 +14,7 @@ tags:
 ---
 <!-- # The Price of Sparsity -->
 
-Two things that i believe: learning comes from compression, and models should be sparse. In this post, we will talk about the latter, focusing on the training techniques for sparse models.
+Two true things in the world: learning comes from compression, and models should be sparse. In this post, we will talk about the latter, focusing on the training techniques for sparse models.
 
 ## 0. Motivation
 Training large models is costly. Making models sparse (*e.g.*, by setting certain weights to be constantly zero, which is effectively removing them) can accelerate both training and inference, saving a lot computation. We refer to this process as sparse training. Our objective is to **train sparse neural networks with matching generalization performance as their dense counterparts**, even at a very high sparsity level.
@@ -82,30 +82,9 @@ This observation gives us a convenient way to understand the gap.
 - In regime 1 where the sparsity ratio is low, both models are able to fit or memorize all the training data, such that the gap in the test accuracy mainly comes from generalization-related characteristics like the loss curvature.
 - In regime 2 where the sparsity ratio is high, `sparse scratch` cannot fit or memorize certain training data compared to `sparse finetuning`, thus besides the generalization-related characteristics, the gap also have something to do with the training failure. To close the gap, we need to solve such training failure first.
 
-We further plot the Fisher information curves during training, which have very different behaviors for the two regimes. Here, learning is like crossing an information barrier. If you can cross it, then you generalize well. If not,
-
-<p align="center">
-  <img src="/img/in-post/toy-fisher.png" alt="Description" width="600">
-</p>
-
-Learning to generalize is like crossing an information barrier. And here are two main messages we learn from the plot:
-- The Fisher information curves are different for the two regimes.
-- The Fisher information for `sparse scratch` is always higher than that for `sparse finetuning`.
-
-This actually provides us with a unified solution for to improve the generalization performance of `sparse scratch` the both regimes: controling the Fisher information.
 
 
-
-
-
-## 4. The Proposed Solutions
-<p align="center">
-  <img src="/img/in-post/algo-fisher.png" alt="Description" width="600">
-</p>
-
-The high level idea here is that we can simply control the Fisher explosion (*cf.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
-
-## 5. Technical Details for Fisher Information
+## 4. Fisher Information Provides a Unified Explanation
 <p align="center">
   <img src="/img/in-post/fisher-col.png" alt="Description" width="800">
 </p>
@@ -115,24 +94,38 @@ I provide a detaled write-up on understanding Fisher information in the context 
 
 I claim that this is the right way to understand Fisher information, instead of the classical parameter estimation view which treats the network parameter $\theta$ as an unknown parameter to be estimated.
 
+We plot the Fisher information curves during training, which have very different behaviors for the two regimes. Here, learning is like crossing an information barrier.
+
+<p align="center">
+  <img src="/img/in-post/toy-fisher.png" alt="Description" width="600">
+</p>
+
+Learning to generalize is like crossing an information barrier. And here are two main messages we learn from the plot:
+- The Fisher information curves are different for the two regimes.
+- The Fisher information for `sparse scratch` is always higher than that for `sparse finetuning`.
+
 This metric view offers a sensible interpretation on common trends of the Fisher information of the network prediction distribution during training. Relatively speaking:
 - Low $\textbf{F}_{\theta}$: This implies the gradient update will not change the prediction much. It usually happens at:
     - **the initial few steps**, where the prediction distribution is close to random, and a small variation to the parameter of the random will have little influence on the distribution.
     - **the converging phase**, where the training is rather stabilized.
 - High $\textbf{F}_{\theta}$: This implies even a small perturbation to the parameter can bring large discrepancy of the network prediction. It is usually happens at the fitting phase, induced by:
-    - **learning new concepts or hard examples** (*cf*., [[Achille et al., 2019]](https://openreview.net/forum?id=BkeStsCcKQ))
+    - **learning new concepts or difficult examples** (*cf*., [[Achille et al., 2019]](https://openreview.net/forum?id=BkeStsCcKQ))
     - **memorizing noisy examples** (*cf.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193))
 
-Often, $\textbf{F}_{\theta}$ will first increase, then drop, leading to a (skewed) bell-shaped trend during training. Thus the learning process appears to be crossing a barrier or a bottleneck
+This generally explains why the Fisher information is higher for `sparse scratch`, *i.e.*, some examples are harder to learn or memorize by the network.
+- If this happens at the ending epochs, it brings optimization failure, which we observe in regime 2.
+- If this happens in the middle of the training, it implies higher training instability and dampens the generalization performance. This mechanism comes from the close relationship of Fisher information and the loss Hessian. See our paper for more detailed discussion.
+
+This indeed provides us with a unified solution for to improve the generalization performance of `sparse scratch` the both regimes: controling the Fisher information.
 
 
+## 5. The Proposed Solutions
+<p align="center">
+  <img src="/img/in-post/algo-fisher.png" alt="Description" width="600">
+</p>
 
+The high level idea here is that we can simply control the Fisher explosion (*cf.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
 
-
-## 6. Next steps
-
-- Extend the work from classification tasks to generation tasks as well (*e.g.*, on both stable diffusion and LLAMA)
-- Discuss the further implication of this work
 
 ## Notes
 1. Traditional GPUs are optimized for dense computations. For sparse training to be really useful, it is necessary to improve such hardware support as well, e.g., they should be able to handle sparse matrix operations and optimize for the memory access pattern.
