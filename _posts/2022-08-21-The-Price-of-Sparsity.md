@@ -76,14 +76,26 @@ To be specific, although there is a persistent generalization gap between `spars
 
 - In regime 2, there emerge large discrepancies on training accuracy as well. We denote this regime as the **optimization regime**.
 
-This observation gives us a convenient way to analyze the behaviors of those neural networks. In regime 1, we focus on the metrics pertaining to generalization (*e.g.*, Hessian, Jacobian, etc.), and in regime 2, we focus on the metrics pertaining to optimization
 
+<!-- In regime 1, we focus on the metrics pertaining to generalization (*e.g.*, loss curvature.), and in regime 2, we focus on the metrics pertaining to optimization (*e.g.*, training instability). -->
+This observation gives us a convenient way to understand the gap.
+- In regime 1 where the sparsity ratio is low, both models are able to fit or memorize all the training data, such that the gap in the test accuracy mainly comes from generalization-related characteristics like the loss curvature.
+- In regime 2 where the sparsity ratio is high, `sparse scratch` cannot fit or memorize certain training data compared to `sparse finetuning`, thus besides the generalization-related characteristics, the gap also have something to do with the training failure. To close the gap, we need to solve such training failure first.
 
-We further found that Fisher information for `sparse scratch` is higher than `sparse finetuning` in both regimes.
+We further plot the Fisher information curves during training, which have very different behaviors for the two regimes. Here, learning is like crossing an information barrier. If you can cross it, then you generalize well. If not,
 
 <p align="center">
   <img src="/img/in-post/toy-fisher.png" alt="Description" width="600">
 </p>
+
+Learning to generalize is like crossing an information barrier. And here are two main messages we learn from the plot:
+- The Fisher information curves are different for the two regimes.
+- The Fisher information for `sparse scratch` is always higher than that for `sparse finetuning`.
+
+This actually provides us with a unified solution for to improve the generalization performance of `sparse scratch` the both regimes: controling the Fisher information.
+
+
+
 
 
 ## 4. The Proposed Solutions
