@@ -106,7 +106,16 @@ This actually provides us with a unified solution for to improve the generalizat
 The high level idea here is that we can simply control the Fisher explosion (*c.f.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
 
 ## 5. Technical Details for Fisher Information
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Technical Details for Fisher Information</title>
+  </head>
+  <body>
+    <h1>PDF</h1>
+    <p>Open a PDF file <a href="https://ziyu-deep.github.io/files/info-sparse-notes.pdf">example</a>.</p>
+  </body>
+</html>
 
 ## 6. Next steps
 
