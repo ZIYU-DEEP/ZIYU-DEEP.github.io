@@ -48,7 +48,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 
 - **Don't be Pessimistic Too Early: Look K Steps Ahead**, *in submission to NeurIPS*, 2023. [[slides](https://ziyu-deep.github.io/files/p-mdp-update.pdf)]
 - [**Contextual Linear Bandits with Partial Information**](https://openreview.net/pdf?id=JalSlVhRl6), *in submission to NeurIPS*, 2023.
-- [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023
+- [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093), *IJCAI*, 2023. [[slides](https://ziyu-deep.github.io/files/23-08-24-onlinedt-slides.pdf)]
 
 
 #### Avocation: Quantum Algorithms

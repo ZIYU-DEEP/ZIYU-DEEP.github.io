@@ -19,6 +19,7 @@ tags:
 
 # 1. High-level Idea
 ### Decoupling *Exploitation* and *Exploration*
+
 \begin{equation}
 \pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}} {\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}
 \end{equation}
@@ -53,6 +54,7 @@ Either perspective, the key spirit is the same: we should get only information *
     - This would be constructed based on the posterior $\alpha_{t}$.
 
 ### Regret
+
 \begin{equation}
 \mathbb{E}[\operatorname{Regret}(T)]=\underset{r_{a}^{*} \sim p_{a^{*}}}{\mathbb{E}} \sum_{t=1}^{T} r_{a^{*}}-\underset{a \sim \pi \atop r_{a, t} \sim p_{a}}{\mathbb{E}} \sum_{t=1}^{T} r_{a, t}
 \end{equation}
