@@ -137,5 +137,6 @@ The high level idea here is that we can simply control the Fisher explosion (*cf
   <img src="/img/in-post/fisher-table.png" alt="Description" width="600">
 </p>
 
-6. After this paper, we found that `sparsity scratch` brings quantum enhancement (*cf.*, [[Liu et al., 2023](https://arxiv.org/pdf/2303.03428.pdf)]). Firstly, sparsity first allows for a practical interface between classical and quantum devices by efficient uploading through QRAM; secondly, the resulting dissipative nature of the network in the early stage (*i.e.*, more positive eigenvalues) brings exponential decay for the linearization error. To be specific, for a neural network with parameter size $n$ and sparsity $s$, running in $T$ iterations, there is a quantum algorithm runs with the following complexity and with error $\epsilon > 0$,
+6. After this paper, we found that `sparsity scratch` brings quantum enhancement (*cf.*, [[Liu et al., 2023](https://arxiv.org/pdf/2303.03428.pdf)]). Firstly, sparsity first allows for a practical interface between classical and quantum devices by efficient uploading through QRAM; secondly, the resulting dissipative nature of the network in the early stage (*i.e.*, more positive eigenvalues) brings exponential decay for the linearization error. To be specific, for a neural network with parameter size $n$ and sparsity $s$, running in $T$ iterations, there is a quantum algorithm runs with the error $\epsilon > 0$ and the complexity,
+
 $$\frac{s^3 T^2}{\epsilon^2} \operatorname{poly}\left(\log n, \log \frac{1}{\epsilon}\right).$$
