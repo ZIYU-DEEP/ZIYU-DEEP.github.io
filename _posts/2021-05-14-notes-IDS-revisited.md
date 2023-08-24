@@ -19,7 +19,9 @@ tags:
 
 # 1. High-level Idea
 ### Decoupling *Exploitation* and *Exploration*
-$$\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}} {\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}$$
+\begin{equation}
+\pi_{t}^{I D S}=\underset{\pi \in \mathcal{D}(\mathcal{A})}{\operatorname{argmin}} {\Psi_{t}(\pi):=\frac{\Delta_{t}(\pi)^{2}}{I_{t}(\pi)}\\}
+\end{equation}
 
 As a decision-making policy, Information-Directed Sampling (IDS) is featured by its decoupling of exploitation and exploration in optimization:
 - **Exploitation** is governed by **immediate regret** $\Delta_{t}(\pi)$.
@@ -51,7 +53,9 @@ Either perspective, the key spirit is the same: we should get only information *
     - This would be constructed based on the posterior $\alpha_{t}$.
 
 ### Regret
-$$\mathbb{E}[\operatorname{Regret}(T)]=\underset{r_{a}^{*} \sim p_{a^{*}}}{\mathbb{E}} \sum_{t=1}^{T} r_{a^{*}}-\underset{a \sim \pi \atop r_{a, t} \sim p_{a}}{\mathbb{E}} \sum_{t=1}^{T} r_{a, t}$$
+\begin{equation}
+\mathbb{E}[\operatorname{Regret}(T)]=\underset{r_{a}^{*} \sim p_{a^{*}}}{\mathbb{E}} \sum_{t=1}^{T} r_{a^{*}}-\underset{a \sim \pi \atop r_{a, t} \sim p_{a}}{\mathbb{E}} \sum_{t=1}^{T} r_{a, t}
+\end{equation}
 
 ### `Immediate Regret` $\Delta_{t}(a)$
 $$\Delta_{t}(a)=\underset{a^{*} \sim \alpha_{t} \atop r_{a^{*}, t} \sim \hat{p}_{a^{*}, t}}{\mathbb{E}}\left[r_{a^{*}, t} \mid \mathcal{F}_{t-1}\right]-\underset{r_{a, t} \sim \hat{p}_{a, t}}{\mathbb{E}}\left[r_{a, t} \mid \mathcal{F}_{t-1}\right]$$
@@ -69,24 +73,27 @@ $$ -->
 
 # 3. Key Theoretical Conclusions
 Fix a deterministic $\lambda \in \mathbb{R}$ and a policy $\pi=\left(\pi_{1}, \pi_{2}, \ldots\right)$ such that $\Psi_{t}\left(\pi_{t}\right) \leq \lambda$ almost surely for each $t \in\{1, . ., T\} .$ Then:
-$$
+
 \begin{aligned}
 \mathbb{E}(\operatorname{Regret}(T, \pi)) &=\mathbb{E} \sum_{t=1}^{T} \Delta_{t}(\pi) \\
 & \leq \sqrt{\lambda} \mathbb{E} \sum_{t=1}^{T} \sqrt{g_{t}(\pi)} \\
 & \leq \sqrt{\lambda T} \sqrt{\mathbb{E} \sum_{t=1}^{T} g_{t}(\pi)} \ \ \text { (Caushy-Schwardsz inequality) } \\
 & \leq \sqrt{\lambda H\left(\alpha_{1}\right) T}.
 \end{aligned}
-$$
+
 
 # 4. Connections to Combinatorial Bandits
 Suppose $\mathcal{A} \subset\{a \subset\{0,1, \ldots, d\}:|a| \leq m\}$, and that there are random variables $\left(X_{t, i}: t \in \mathbb{N}, i \in\{1, \ldots, d\}\right)$ such that
-$$
+\begin{equation}
 Y_{t, a}=\left(X_{t, i}: i \in a\right) \quad \text { and } \quad R_{t, a}=\frac{1}{m} \sum_{i \in a} X_{t, i}.
-$$
+\end{equation}
+
 Assume that the random variables $\left\{X_{t, i}: i \in\{1, \ldots, d\}\right\}$ are independent conditioned on $\mathcal{F}_{t}$ and $X_{t, i} \in\left[\frac{-1}{2}, \frac{1}{2}\right]$ almost surely for each $(t, i) .$ Then for all $t \in \mathbb{N}, \Psi_{t}\left(\pi_{t}^{\mathrm{IDS}}\right) \leq \frac{d}{2 m^{2}}$ almost surely. Thus:
-$$
+
+\begin{equation}
 \mathbb{E}[\operatorname{Regret}(T, \pi)] \leq \sqrt{\frac{d}{2 m^{2}} H\left(\alpha_{1}\right) T}.
-$$
+\end{equation}
+
 We could further prove that the lower bound of this problem is of order $\sqrt{\frac{d}{m} T}$, so the bound is order optimal to a $\sqrt{\log \left(\frac{d}{m}\right)}$ factor.
 
 
