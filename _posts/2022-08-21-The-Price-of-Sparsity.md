@@ -20,7 +20,7 @@ Two things that i believe: learning comes from compression, and models should be
 Training large models is costly. Making models sparse (*e.g.*, by setting certain weights to be constantly zero, which is effectively removing them) can accelerate both training and inference, saving a lot computation. We refer to this process as sparse training. Our objective is to **train sparse neural networks with matching generalization performance as their dense counterparts**, even at a very high sparsity level.
 
 ## 1. Backgrounds
-The above is a challenging task due to the fundamental tradeoff between efficiency and performance (*c.f.* the rate distortion tradeoff, [[Dai at al., 2018]](http://proceedings.mlr.press/v80/dai18d/dai18d.pdf) and [[Gao et al., 2019]](https://icml.cc/media/Slides/icml/2019/102(11-14-00)-11-15-15-4454-rate_distortion.pdf)). That being said, while higher sparsity level implies higher computational efficiency, it is often brings performance degradation.
+The above is a challenging task due to the fundamental tradeoff between efficiency and performance (*cf.* the rate distortion tradeoff, [[Dai at al., 2018]](http://proceedings.mlr.press/v80/dai18d/dai18d.pdf) and [[Gao et al., 2019]](https://icml.cc/media/Slides/icml/2019/102(11-14-00)-11-15-15-4454-rate_distortion.pdf)). That being said, while higher sparsity level implies higher computational efficiency, it is often brings performance degradation.
 
 
 
@@ -103,19 +103,31 @@ This actually provides us with a unified solution for to improve the generalizat
   <img src="/img/in-post/algo-fisher.png" alt="Description" width="600">
 </p>
 
-The high level idea here is that we can simply control the Fisher explosion (*c.f.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
+The high level idea here is that we can simply control the Fisher explosion (*cf.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193)) by directly train with examples with low Fisher information during the critical early stage. Prior works like this include [[Paul et al., 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/77dd8e90fe833eba5fae86cf017d7a56-Abstract-Conference.html)], which considers to find lottery ticket with less dense pretraining steps by training with only easy examples (filtered by the error L$^{2}$-norm score as in [[Paul et al., 2021](https://arxiv.org/abs/2107.07075)]).
 
 ## 5. Technical Details for Fisher Information
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Technical Details for Fisher Information</title>
-  </head>
-  <body>
-    <h1>PDF</h1>
-    <p>Open a PDF file <a href="https://ziyu-deep.github.io/files/info-sparse-notes.pdf">example</a>.</p>
-  </body>
-</html>
+<p align="center">
+  <img src="/img/in-post/fisher-col.png" alt="Description" width="800">
+</p>
+
+I provide a detaled write-up on understanding Fisher information in the context of deep neural networks at this [link](https://ziyu-deep.github.io/files/info-sparse-notes.pdf). The important message here is that Fisher information should be viewed as a local discrepancy measure of network prediction distribution. Specifically:
+> If **small variation in $\theta$** results in **large discrepancy to the network prediction distribution $q_{\theta}(\cdot)$**, this $\theta$ can be seen as to withhold **high amount of information** about the learning process.
+
+I claim that this is the right way to understand Fisher information, instead of the classical parameter estimation view which treats the network parameter $\theta$ as an unknown parameter to be estimated.
+
+This metric view offers a sensible interpretation on common trends of the Fisher information of the network prediction distribution during training. Relatively speaking:
+- Low $\textbf{F}_{\theta}$: This implies the gradient update will not change the prediction much. It usually happens at:
+    - **the initial few steps**, where the prediction distribution is close to random, and a small variation to the parameter of the random will have little influence on the distribution.
+    - **the converging phase**, where the training is rather stabilized.
+- High $\textbf{F}_{\theta}$: This implies even a small perturbation to the parameter can bring large discrepancy of the network prediction. It is usually happens at the fitting phase, induced by:
+    - **learning new concepts or hard examples** (*cf*., [[Achille et al., 2019]](https://openreview.net/forum?id=BkeStsCcKQ))
+    - **memorizing noisy examples** (*cf.*, [[Jastrebski et al., 2021]](https://arxiv.org/abs/2012.14193))
+
+Often, $\textbf{F}_{\theta}$ will first increase, then drop, leading to a (skewed) bell-shaped trend during training. Thus the learning process appears to be crossing a barrier or a bottleneck
+
+
+
+
 
 ## 6. Next steps
 
