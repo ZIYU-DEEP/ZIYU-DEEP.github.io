@@ -41,7 +41,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 #### Deep Learning Theory and Applications
 
 - [**Understanding the Bias of Deep Anomaly Detection**](https://arxiv.org/abs/2105.07346), *IJCAI*, 2021. [[code](https://github.com/ZIYU-DEEP/Bias-in-Deep-Anomaly-Detection-PyTorch)] [[slides](https://ziyu-deep.github.io/files/IJCAI-long-21-07-25-1.pdf)]
-- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *SNN Workshop @ICML*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)]
+- [**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training), *SNN Workshop @ICML*, 2022. [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)] [[blog](https://ziyu-deep.github.io/2022/08/21/The-Price-of-Sparsity/)]
 
 
 #### Reinforcement Learning and Bandit Algorithms
