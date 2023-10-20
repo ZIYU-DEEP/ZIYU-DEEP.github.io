@@ -27,7 +27,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 **Ziyu Ye**, Yuxin Chen, Heather Zheng  
 *IJCAI*, 2021.  
 
-[**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training) [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)] [[blog](https://ziyu-deep.github.io/2022/08/21/The-Price-of-Sparsity/)]
+[**Generalization and Memorization in Sparse Neural Networks**](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training) [[code](https://github.com/ZIYU-DEEP/Generalization-and-Memorization-in-Sparse-Training)] [[notes](https://ziyu-deep.github.io/files/info-sparse-notes.pdf)] [[blog](https://ziyu-deep.github.io/2022/08/21/The-Price-of-Sparsity/)]    
 **Ziyu Ye**, Chaoqi Wang, Zixin Ding, Yuxin Chen  
 *SNN Workshop @ICML*, 2022.  
 
