@@ -19,6 +19,8 @@
 > My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way.    
 > – [Claude E. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon)
 
+
+
 ## 🕹 Research
 Papers listed below introduce facets of my research. Certain links will be updated upon the publication of the papers.
 #### Deep Learning Theory and Applications
@@ -35,7 +37,7 @@ Papers listed below introduce facets of my research. Certain links will be updat
 
 [**Follow-ups Also Matter: Improving Contextual Bandits via Post-serving Contexts**](https://openreview.net/pdf?id=JalSlVhRl6) [[slides](https://ziyu-deep.github.io/files/slides_follow_ups_also_matter_neurips.pdf)]  
 Chaoqi Wang, **Ziyu Ye**, Zhe Feng, Ashwinkumar Badanidiyuru, Haifeng Xu  
-*NeurIPS (spotlight*, 2023.
+*NeurIPS (spotlight)*, 2023.
 
 [**Online Decision Trees with Active Feature Acquisition**](https://arxiv.org/abs/2305.02093)   
 Arman Rahbar, **Ziyu Ye**, Yuxin Chen, Morteza Haghir Chehreghani  
@@ -54,11 +56,32 @@ Arman Rahbar, **Ziyu Ye**, Yuxin Chen, Morteza Haghir Chehreghani
 *Under review by PNAS*, 2023.
 
 
+## 🕹 Random Updates
+[Oct 2023] I am co-organizing [The 1st Workshop for Agents with Large (Language) Models]() with friends. Stay tuned!  
+
+[Oct 2023] Our startup secured $1.5M from angel investors.
+
+[Jun 2023] I signed a term sheet for our startup at a noisy shopping center. Warm thanks to my best friend.  
+
+[Sep 2023] Our paper on [partial contextual bandits](https://ziyu-deep.github.io/files/slides_follow_ups_also_matter_neurips.pdf) accepted at NeurIPS as spotlight.  
+
+[Feb 2023] I am taking this year off to work as the founder – after some fun discussions with friends, we decided to build an AIGC startup, [Avolution AI](http://www.avolution.ai/).  
+
+[Sep 2022] Worked as the lead AI scientist for [SeQure](https://sequre.ltd/). I went to Hong Kong this summer as well.
+
+[May 2021] My first paper on [bias in anomaly detection](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=S2da4LUAAAAJ&citation_for_view=S2da4LUAAAAJ:u-x6o8ySG0sC) accepted at IJCAI with a 15-min talk.  
+
+[Jul 2020] Starting as a PhD student at [UChicago CS](cs.uchicago.edu/), working with [Prof. Heather Zheng](https://people.cs.uchicago.edu/~htzheng/).  
+
+[Jun 2020] Graduated from [UChicago CAPP](https://capp.uchicago.edu/). Still dreaming about changing the world, bit by bit.  
+
+[...]()
+
 ## 🕹 Bio
 
 Hey, this is Ziyu, a pursuer of machine intelligence.
 
-I am currently a Ph.D. student in [Computer Science at The University of Chicago](https://computerscience.uchicago.edu/). Before this, I completed my Master of Science degree of [Computational Analysis and Public Policy](https://capp.uchicago.edu/) there. I had my Bachelor of Economics degree at [The Special Class for the Gifted Young](https://www.wikiwand.com/en/Special_Class_for_the_Gifted_Young). Here are my [Google Scholar](https://scholar.google.com/citations?user=S2da4LUAAAAJ&hl=en) and [LinkedIn](https://www.linkedin.com/in/ziyuye/) page.
+I am currently a Ph.D. student in [Computer Science at The University of Chicago](https://www.uchicago.edu/en/who-we-are/global-impact/accolades/nobel-laureates). Before this, I completed my Master of Science degree of [Computational Analysis and Public Policy](https://capp.uchicago.edu/) there. I had my Bachelor of Economics degree at [The Special Class for the Gifted Young](https://www.wikiwand.com/en/Special_Class_for_the_Gifted_Young). Here are my [Google Scholar](https://scholar.google.com/citations?user=S2da4LUAAAAJ&hl=en) and [LinkedIn](https://www.linkedin.com/in/ziyuye/) page.
 
 <!-- My research and working experience is available on [LinkedIn](https://www.linkedin.com/in/ziyuye/). My detailed CV is available upon request. -->
 
