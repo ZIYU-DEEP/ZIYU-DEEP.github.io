@@ -14,10 +14,10 @@
 
 # My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way. -->
 
-> I just wondered how things were put together.  
-> I am very seldom interested in applications. I am more interested in the elegance of a problem. Is it a good problem, an interesting problem?  
-> My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way.    
-> – [Claude E. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon)
+> - I just wondered how things were put together.  
+> - I am very seldom interested in applications. I am more interested in the elegance of a problem. Is it a good problem, an interesting problem?  
+> - My fondest dream is to someday build a machine that really thinks, learns, communicates with humans and manipulate its environment in a fairly sophisticated way.    
+> – [Claude E. Shannon](https://en.wikipedia.org/wiki/Claude_Shannon) (1916 - 2001)
 
 
 
