@@ -56,10 +56,10 @@ Arman Rahbar, **Ziyu Ye**, Yuxin Chen, Morteza Haghir Chehreghani
 *Under review by PNAS*, 2023.
 
 
-## 🕹 Random Updates
+<!-- ## 🕹 Random Updates
 [Oct 2023] I am co-organizing [The 1st Workshop for Agents with Large (Language) Models]() with friends. Stay tuned!  
 
-[Oct 2023] Our startup secured $1.5M from angel investors.
+[Oct 2023] Our startup secured $3M from angel investors.
 
 [Jun 2023] I signed a term sheet for our startup at a noisy shopping center. Warm thanks to my best friend.  
 
@@ -75,7 +75,7 @@ Arman Rahbar, **Ziyu Ye**, Yuxin Chen, Morteza Haghir Chehreghani
 
 [Jun 2020] Graduated from [UChicago CAPP](https://capp.uchicago.edu/). Still dreaming about changing the world, bit by bit.  
 
-[...]()
+[...]() -->
 
 ## 🕹 Bio
 
