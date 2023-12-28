@@ -108,8 +108,8 @@ github-calendar: true
 
 # Friends
 friends: [
-  {
-    title: "Kunyu He",
-    href: "https://kunyu-he.com/"
-  }
+  # {
+  #   title: "Kunyu He",
+  #   href: "https://kunyu-he.com/"
+  # }
 ]
